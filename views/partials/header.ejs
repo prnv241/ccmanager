@@ -46,7 +46,11 @@
             <li class="nav-item"><a class="nav-link" href="/login">LogIn</a></li>
             <li class="nav-item"><a class="nav-link" href="/signup">SignUp</a>
           <% }else { %>
-            <li class="nav-item"><a class = "nav-link" href="#"><%=currentUser.username%></a></li>
+            <% if(currentUser.role == "Lawyer") { %>
+              <li class="nav-item"><a class = "nav-link" href="/profile/lawyer/<%=currentUser.roleId%>"><%=currentUser.username%></a></li>
+              <% } else { %> 
+                <li class="nav-item"><a class = "nav-link" href="/profile/client/<%=currentUser.roleId%>"><%=currentUser.username%></a></li>
+              <% } %>
             <li class="nav-item"><a class="nav-link" href="/logout">LogOut</a></li>
           <% } %>
         </ul>

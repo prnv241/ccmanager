@@ -2,16 +2,17 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var methodOverride = require("method-override");
 var User = require("./models/user");
 var Client = require("./models/client");
 var Lawyer = require("./models/lawyer");
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
-var passportLocalMongoose = require("passport-local-mongoose");
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
 app.use(
   require("express-session")({
     secret: "This app is a really great application!",
@@ -90,10 +91,8 @@ app.get("/profile/client/new", function(req,res) {
 app.post("/profile/lawyer", function(req,res){
   Lawyer.create(req.body.prof, function(err,law) {
     if(err) {
-      console.log(err.message + "ERRRRRR");
       res.redirect("/");
     } else {
-      console.log(law);
       User.findByIdAndUpdate(req.user._id, {roleId: law._id}, function(err,user) {
         if(err){
           res.redirect("/");
@@ -110,7 +109,6 @@ app.post("/profile/client", function(req,res) {
     if(err) {
       res.redirect("/");
     } else {
-      console.log(cli);
       User.findByIdAndUpdate(req.user._id, {roleId: cli._id}, function(err,user) {
         if(err){
           res.redirect("/");
@@ -121,6 +119,79 @@ app.post("/profile/client", function(req,res) {
     }
   });
 });
+
+app.get("/profile/client/:id", function(req,res) {
+  var ID = req.params.id;
+  Client.findById(ID,function(err,cli) {
+    if(err) {
+      console.log(err.message);
+      res.redirect("/");
+    } else {
+      res.render("profile/Client", {cli: cli});
+    }
+  });
+});
+
+app.get("/profile/lawyer/:id", function(req,res) {
+  var ID = req.params.id;
+  Lawyer.findById(ID,function(err,law) {
+    if(err) {
+      console.log(err.message);
+      res.redirect("/");
+    } else {
+      res.render("profile/Lawyer", {law: law});
+    }
+  });
+});
+
+app.get("/profile/client/:id/edit", function(req,res){
+  var ID = req.params.id;
+  Client.findById(ID,function(err,cli) {
+    if(err) {
+      console.log(err.message);
+      res.redirect("/");
+    } else {
+      res.render("profile/editClient", {cli: cli});
+    }
+  });
+});
+
+app.get("/profile/lawyer/:id/edit", function(req,res){
+  var ID = req.params.id;
+  Lawyer.findById(ID,function(err,law) {
+    if(err) {
+      console.log(err.message);
+      res.redirect("/");
+    } else {
+      res.render("profile/editLawyer", {law: law});
+    }
+  });
+})
+
+app.put("/profile/client/:id", function(req,res){
+  var ID = req.params.id;
+  Client.findByIdAndUpdate(ID,req.body.prof,function(err,cli) {
+    if(err) {
+      console.log(err.message);
+      res.redirect("/");
+    } else {
+      res.redirect("/profile/client/" + ID);
+    }
+  });
+});
+
+app.put("/profile/lawyer/:id", function(req,res){
+  var ID = req.params.id;
+  Lawyer.findByIdAndUpdate(ID,req.body.prof,function(err,law) {
+    if(err) {
+      console.log(err.message);
+      res.redirect("/");
+    } else {
+      res.redirect("/profile/lawyer/" + ID);
+    }
+  });
+})
+
 
 const PORT = 3000;
 const HOSTNAME = "127.0.0.1";

@@ -1,1 +1,16 @@
+
+<%- include("../partials/header.ejs") %>
+
+<div class="cent">
+  <div class="container bodys">
+    <img src="<%=cli.propic%>" class="mt-5" id="ig">
+    <h2 class="card-title mt-4"><%=cli.name%></h2>
+    <div class="card-body">
+      <p class="card-text"><strong>Email - </strong><%=cli.email%></p>
+      <p class="card-text"><strong>Mobile No - </strong><%=cli.number%></p>
+      <a class="btn btn-outline-dark" href="/profile/client/<%=cli._id%>/edit">Edit Profile</a>
+    </div> 
+  </div>
+</div>
  
+<%- include("../partials/footer.ejs") %>
