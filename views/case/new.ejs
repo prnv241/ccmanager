@@ -1,0 +1,51 @@
+ 
+<%- include("../partials/header.ejs") %>
+
+<div class="cent">
+  <div class="container boxes">
+    <h2 class="mt-3" style="text-align: center;">Create New Case</h2>
+    <form action="/cases/<%=currentUser._id%>" method="POST" class="mt-5"> 
+        <div class="form-group">
+          <label>Case Type</label>
+          <input type="text" class="form-control" name="rec[casetype]" required>
+        </div>
+        <div class="form-group">
+          <label>Registration Number</label>
+          <input type="number" class="form-control" name="rec[regno]" required>
+        </div>
+        <div class="form-group">
+          <label>CNR Number</label>
+          <input type="text" class="form-control" name="rec[cnrno]" required>
+        </div>
+        <div class="form-group">
+          <label>Filing Date</label>
+          <input type="date" class="form-control" name="rec[filingdate]" required>
+        </div>
+        <div class="form-group">
+          <label>Stage</label>
+          <input type="text" class="form-control" name="rec[stage]" required>
+        </div>
+        <div class="form-group">
+          <label>Next Hearing Date</label>
+          <input type="date" class="form-control" name="rec[nexthearing]" required>
+        </div>
+        <div class="form-group">
+          <label>Court Name</label>
+          <input type="text" class="form-control" name="rec[courtname]" required>
+        </div>
+        <div class="form-group">
+          <label>Client Name</label>
+          <input type="text" class="form-control" name="rec[clientname]" required>
+        </div>
+        <div class="form-group">
+          <label>Lawyer Name</label>
+          <input type="text" class="form-control" name="rec[lawyername]" required>
+        </div>
+        <div class="form-group mt-5">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+  </div>
+</div>
+
+<%- include("../partials/footer.ejs") %>

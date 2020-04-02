@@ -1,0 +1,20 @@
+
+<%- include("../partials/header.ejs") %>
+
+<div class="cent">
+  <div class="container bodys">
+    <div class="pt-4" style="text-align: left; font-size: large;">
+      <h3><strong>CNR No - </strong><%=casee.cnrno%></h3>
+      <p><strong>Case Type - </strong><%=casee.casetype%></p>
+      <p><strong>Registration Number - </strong><%=casee.regno%></p>
+      <p><strong>Client Name - </strong><%=casee.clientname%></p>
+      <p><strong>Lawyer Name - </strong><%=casee.lawyername%></p>
+      <p><strong>Filing Date - </strong><%=casee.filingdate%></p>
+      <p><strong>Current Stage - </strong><%=casee.stage%></p>
+      <p><strong>Next Hearing Date - </strong><%=casee.nexthearing%></p>
+      <p><strong>Court Name - </strong><%=casee.courtname%></p>
+    </div>
+  </div>
+</div>
+ 
+<%- include("../partials/footer.ejs") %>

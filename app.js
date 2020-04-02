@@ -6,6 +6,7 @@ var methodOverride = require("method-override");
 var User = require("./models/user");
 var Client = require("./models/client");
 var Lawyer = require("./models/lawyer");
+var Case = require("./models/case");
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
 
@@ -192,6 +193,45 @@ app.put("/profile/lawyer/:id", function(req,res){
   });
 })
 
+app.get("/cases/:id/new", function(req,res) {
+  res.render("case/new");
+});
+
+app.post("/cases/:id" , function(req,res) {
+  Case.create(req.body.rec, function(err,casee) {
+    if(err) {
+      console.log(err);
+      res.redirect("/");
+    } else {
+      casee.authid = req.params.id;
+      casee.save();
+      res.redirect("/cases/" + req.params.id);
+    }
+  });
+});
+
+app.get("/cases/:id", function(req,res) {
+  Case.find({authid: req.params.id}, function(err,cases) {
+    if(err) {
+      console.log(err);
+      res.redirect("/");
+    } else {
+      res.render("case/cases", {cases:cases});
+    }
+  });
+});
+
+app.get("/cases/:id/:caseid", function(req,res) {
+  var ID = req.params.caseid;
+  Case.findById(ID, function(err,casee) {
+    if(err) {
+      console.log(err);
+      res.redirect("/");
+    } else {
+      res.render("case/show", {casee:casee});
+    }
+  });
+});
 
 const PORT = 3000;
 const HOSTNAME = "127.0.0.1";

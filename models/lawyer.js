@@ -8,7 +8,13 @@ var lawyerSchema = new mongoose.Schema({
   special: String,
   propic: String,
   address: String,
-  bio: String
+  bio: String,
+  cases: [
+    {
+       type: mongoose.Schema.Types.ObjectId,
+       ref: "Case"
+    }
+ ]
 });
 
 module.exports = mongoose.model("Lawyer", lawyerSchema);

@@ -1,0 +1,18 @@
+
+<%- include("../partials/header.ejs") %>
+
+<div class="cent">
+  <div class="container bodys">
+    <% cases.forEach(function(casee) { %>
+      <div class="pt-4">
+        <h3><a href="/cases/<%=currentUser._id%>/<%=casee._id%>" style="color: black;"><strong>CNR No - </strong><%=casee.cnrno%></a></h3>
+        <p><strong>Case Type - </strong><%=casee.casetype%></p>
+        <p><strong>Client Name - </strong><%=casee.clientname%></p>
+        <p><strong>Lawyer Name - </strong><%=casee.lawyername%></p>
+        <hr>
+      </div>
+    <% }) %>
+  </div>
+</div>
+ 
+<%- include("../partials/footer.ejs") %>
