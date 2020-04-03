@@ -233,6 +233,38 @@ app.get("/cases/:id/:caseid", function(req,res) {
   });
 });
 
+app.get("/cases/:id/:caseid/edit", function(req,res) {
+  var ID = req.params.caseid;
+  Case.findById(ID, function(err,casee) {
+    if(err) {
+      console.log(err);
+      res.redirect("/");
+    } else {
+      res.render("case/edit", {casee:casee});
+    }
+  });
+});
+
+app.put("/cases/:id/:caseid", function(req,res) {
+  var ID = req.params.caseid;
+  Case.findByIdAndUpdate(ID, req.body.rec, function(err,casee) {
+    if(err) {
+      console.log(err.message);
+    }
+    res.redirect("/cases/" + req.params.id);
+  }); 
+});
+
+app.delete("/cases/:id/:caseid", function(req,res) {
+  var ID = req.params.caseid;
+  Case.findByIdAndDelete(ID, function(err,casee) {
+    if(err) {
+      console.log(err.message);
+    }
+    res.redirect("/cases/" + req.params.id);
+  })
+});
+
 const PORT = 3000;
 const HOSTNAME = "127.0.0.1";
 
