@@ -1,0 +1,19 @@
+ 
+<%- include("../partials/header.ejs") %>
+
+<div class="cent">
+  <div class="container bodys">
+    <img src="<%=law.propic%>" class="mt-5" id="ig">
+      <h2 class="card-title mt-4"><%=law.name%></h2>
+      <div class="card-body">
+        <p class="card-text"><strong>Email - </strong><%=law.email%></p>
+        <p class="card-text"><strong>Mobile No - </strong><%=law.number%></p>
+        <p class="card-text"><strong>Specialization - </strong><%=law.special%></p>
+        <p class="card-text"><strong>Office Address - </strong><%=law.address%></p>
+        <p class="card-text"><strong>Bio - </strong><%=law.bio%></p>
+        <a class="btn btn-outline-dark" href="/lawyer/<%=law._id%>/">Edit Profile</a>
+      </div>  
+  </div>
+</div>
+
+<%- include("../partials/footer.ejs") %>

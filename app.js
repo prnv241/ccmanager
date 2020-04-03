@@ -22,7 +22,7 @@ app.use(
   })
 );
 
-mongoose.connect("mongodb+srv://global:pranav@cluster0-noe9k.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true}).then(() => {
+mongoose.connect("mongodb+srv://global:pranav@cluster0-noe9k.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser:true}).then(() => {
 	console.log("Connected");	
 }).catch(err => {
 	console.log("ERROR:", err.message);
@@ -262,6 +262,17 @@ app.delete("/cases/:id/:caseid", function(req,res) {
       console.log(err.message);
     }
     res.redirect("/cases/" + req.params.id);
+  })
+});
+
+app.get("/lawyers", function(req,res) {
+  Lawyer.find({}, function(err,lawyers) {
+    if(err) {
+      console.log(err.message);
+      res.redirect("/");
+    } else {
+      res.render("lawyer/index", {lawyers: lawyers});
+    }
   })
 });
 

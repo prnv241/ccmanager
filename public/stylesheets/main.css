@@ -53,6 +53,11 @@ body .boxes {
   text-align: center;
 }
 
+.container.bodys.side {
+  display: inline;
+  float: left;
+}
+
 body #ig{
   height: 300px;
   border-radius: 50%;

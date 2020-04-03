@@ -1,0 +1,22 @@
+ 
+<%- include("../partials/header.ejs") %>
+
+<div class="cent">
+  <div class="container bodys" style="text-align: left;">
+    <% lawyers.forEach(function(lawyer) { %>
+      <div class="pt-4 row">
+        <div class="col-lg-4">
+          <img src="<%=lawyer.propic%>" style="width: 200px; height: 200px;">
+        </div> 
+        <div class="col-lg-8">
+          <h4><a href="/lawyer/<%=lawyer._id%>" style="color: black;"><strong>Name - </strong><%=lawyer.name%></a></h4>
+          <p><strong>Speciality - </strong><%=lawyer.special%></p>
+          <p><strong>Bio - </strong><%=lawyer.bio.substring(1,200)%></p>
+        </div>
+        <hr>
+      </div>
+    <% }) %>
+  </div>
+</div>
+ 
+<%- include("../partials/footer.ejs") %>
