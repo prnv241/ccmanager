@@ -5,13 +5,17 @@
   <div class="container bodys">
     <img src="<%=law.propic%>" class="mt-5" id="ig">
       <h2 class="card-title mt-4"><%=law.name%></h2>
-      <div class="card-body">
+      <a class="card-body">
         <p class="card-text"><strong>Email - </strong><%=law.email%></p>
         <p class="card-text"><strong>Mobile No - </strong><%=law.number%></p>
         <p class="card-text"><strong>Specialization - </strong><%=law.special%></p>
         <p class="card-text"><strong>Office Address - </strong><%=law.address%></p>
         <p class="card-text"><strong>Bio - </strong><%=law.bio%></p>
-        <a class="btn btn-outline-dark" href="/lawyer/<%=law._id%>/">Edit Profile</a>
+        <div class="mt-3">
+          <a class="btn btn-outline-dark m-2" href="/appointments/<%=law._id%>/new">Book Appointment</a>
+          <a href="tel:<%=law.number%>" class="btn btn-outline-dark m-2">Call Now</a>
+          <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=<%=law.email%>&su=Hello&shva=1" class="btn btn-outline-dark m-2"/>Send Mail</a>
+        </div>
       </div>  
   </div>
 </div>

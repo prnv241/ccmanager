@@ -1,4 +1,3 @@
- 
 var mongoose = require("mongoose");
 
 var clientSchema = new mongoose.Schema({
@@ -8,10 +7,22 @@ var clientSchema = new mongoose.Schema({
   propic: String,
   cases: [
     {
-       type: mongoose.Schema.Types.ObjectId,
-       ref: "Case"
-    }
- ]
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Case",
+    },
+  ],
+  appointments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Appointment",
+    },
+  ],
+  invoices: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Invoice",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Client", clientSchema);

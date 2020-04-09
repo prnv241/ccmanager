@@ -1,4 +1,3 @@
-
 <%- include("../partials/header.ejs") %>
 
 <div class="cent">
@@ -13,12 +12,14 @@
       <p><strong>Current Stage - </strong><%=casee.stage%></p>
       <p><strong>Next Hearing Date - </strong><%=casee.nexthearing%></p>
       <p><strong>Court Name - </strong><%=casee.courtname%></p>
-      <p><a href="/cases/<%=currentUser._id%>/<%=casee._id%>/edit" class="btn btn-light">Edit Case</a></p>
-      <form action="/cases/<%=currentUser._id%>/<%=casee._id%>?_method=DELETE" method="POST">
+      <p>
+        <a href="/cases/<%=casee._id%>/edit" class="btn btn-light">Edit Case</a>
+      </p>
+      <form action="/cases/<%=casee._id%>?_method=DELETE" method="POST">
         <button class="btn btn-light">Delete</button>
       </form>
     </div>
   </div>
 </div>
- 
+
 <%- include("../partials/footer.ejs") %>

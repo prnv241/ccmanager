@@ -1,0 +1,20 @@
+<%- include("../partials/header.ejs") %>
+
+<div class="cent">
+  <div class="container bodys">
+    <% apts.forEach(function(apt) { %>
+    <div class="pt-4">
+      <h3><strong>Lawyer Name - </strong><%=apt.lname%></h3>
+      <p><strong>Client Name - </strong><%=apt.cname%></p>
+      <p><strong>Date - </strong><%=apt.date%></p>
+      <p><strong>Time - </strong><%=apt.time%></p>
+      <form action="/appointments/<%=apt._id%>?_method=DELETE" method="POST">
+        <button class="btn btn-outline-dark">Delete</button>
+      </form>
+      <hr />
+    </div>
+    <% }) %>
+  </div>
+</div>
+
+<%- include("../partials/footer.ejs") %>

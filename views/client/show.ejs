@@ -1,0 +1,20 @@
+<%- include("../partials/header.ejs") %>
+
+<div class="cent">
+  <div class="container bodys">
+    <img src="<%=cli.propic%>" class="mt-5" id="ig" />
+    <h2 class="card-title mt-4"><%=cli.name%></h2>
+    <div class="card-body">
+      <p class="card-text"><strong>Email - </strong><%=cli.email%></p>
+      <p class="card-text"><strong>Mobile No - </strong><%=cli.number%></p>
+      <div class="mt-3">
+        <a class="btn btn-outline-dark m-2" href="/invoices/<%=cli._id%>/new">Send Invoice</a>
+        <a href="tel:<%=cli.number%>" class="btn btn-outline-dark m-2">Call Now</a>
+        <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=<%=cli.email%>&su=Hello&shva=1" class="btn btn-outline-dark m-2"/>Send Mail</a>
+      </div>
+    </div>  
+    </div>
+  </div>
+</div>
+
+<%- include("../partials/footer.ejs") %>
