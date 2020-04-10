@@ -1,9 +1,111 @@
 <%- include("partials/header.ejs") %>
 
-<h1>This is dashboard Page</h1>
-
-<a href="/cases/new" class="btn btn-primary">New Case</a>
-
-<a href="/cases" class="btn btn-primary">Show Cases</a>
+<div class="cent">
+  <div class="container bodys" style="padding: 30px;">
+    <p class="pagehead">Dashboard</p>
+    <div class="row pb-4 pt-4">
+      <div class="col-lg-6">
+        <div class="listall">
+          <h4>Cases</h4>
+          <% info.cases.some(function(item,index) { if(index>4) return %>
+          <a href="/cases/<%=item._id%>/show" style="color: black;"
+            ><p class="mb-0">CNR No - <%=item.cnrno%></p></a
+          >
+          <p class="mb-1">Next hearing date - <%=item.nexthearing%></p>
+          <hr />
+          <% }); %>
+          <a href="/cases/new" class="btn btn-sm btn-outline-dark"
+            >Add a new Case</a
+          >
+          <a href="/cases" class="btn btn-sm btn-outline-dark"
+            >Show all Cases</a
+          >
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="listall">
+          <h4>Appointments</h4>
+          <% info.appointments.some(function(item,index) { if(index>4) return %>
+          <a href="/appointments" style="color: black;"
+            ><p class="mb-0">Lawyer name - <%=item.lname%></p></a
+          >
+          <p class="mb-1">Client Name - <%=item.cname%></p>
+          <hr />
+          <% }); %>
+          <a href="/appointments" class="btn btn-sm btn-outline-dark"
+            >Show all Appointments</a
+          >
+        </div>
+      </div>
+    </div>
+    <% if(currentUser.role == "Lawyer") { %>
+    <div class="row pb-4">
+      <div class="col-lg-6">
+        <div class="listall">
+          <h4>Invoices</h4>
+          <% info.invoices.some(function(item,index) { if(index>4) return %>
+          <a href="/invoices" style="color: black;"
+            ><p class="mb-0">Lawyer name - <%=item.lname%></p></a
+          >
+          <p class="mb-1">Client Name - <%=item.cname%></p>
+          <hr />
+          <% }); %>
+          <a href="/invoices" class="btn btn-sm btn-outline-dark"
+            >Show all Invoices</a
+          >
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="listall">
+          <h4>Clients</h4>
+          <% cli.some(function(item,index) { if(index>4) return %>
+          <a href="/clients/<%=item._id%>" style="color: black;"
+            ><p class="mb-0">Client name - <%=item.name%></p></a
+          >
+          <p class="mb-1">Client email - <%=item.email%></p>
+          <hr />
+          <% }); %>
+          <a href="/clients" class="btn btn-sm btn-outline-dark"
+            >Show all Clients</a
+          >
+        </div>
+      </div>
+    </div>
+    <% } else { %>
+    <div class="row pb-4">
+      <div class="col-lg-6">
+        <div class="listall">
+          <h4>Invoices</h4>
+          <% info.invoices.some(function(item,index) { if(index>4) return %>
+          <a href="/invoices" style="color: black;"
+            ><p class="mb-0">Lawyer name - <%=item.lname%></p></a
+          >
+          <p class="mb-1">Client Name - <%=item.cname%></p>
+          <hr />
+          <% }); %>
+          <a href="/invoices" class="btn btn-sm btn-outline-dark"
+            >Show all Invoices</a
+          >
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="listall">
+          <h4>Lawyers</h4>
+          <% law.some(function(item,index) { if(index>4) return %>
+          <a href="/lawyers/<%=item._id%>" style="color: black;"
+            ><p class="mb-0">Lawyer name - <%=item.name%></p></a
+          >
+          <p class="mb-1">Lawyer email - <%=item.email%></p>
+          <hr />
+          <% }); %>
+          <a href="/lawyers" class="btn btn-sm btn-outline-dark"
+            >Show all Lawyers</a
+          >
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
 
 <%- include("partials/footer.ejs") %>

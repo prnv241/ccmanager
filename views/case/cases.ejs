@@ -1,20 +1,26 @@
 <%- include("../partials/header.ejs") %>
 
 <div class="cent">
-  <div class="container bodys">
+  <div class="container bodys" style="text-align: left;">
+    <p class="pagehead">Your Cases</p>
     <% cases.forEach(function(casee) { %>
-    <div class="pt-4">
-      <h3>
-        <a href="/cases/<%=casee._id%>/show" style="color: black;"
-          ><strong>CNR No - </strong><%=casee.cnrno%></a
-        >
-      </h3>
-      <p><strong>Case Type - </strong><%=casee.casetype%></p>
-      <p><strong>Client Name - </strong><%=casee.clientname%></p>
-      <p><strong>Lawyer Name - </strong><%=casee.lawyername%></p>
-      <hr />
+    <div class="pl-5 pr-5 pt-4 row">
+      <div class="col-lg-6">
+        <h4>
+          <a href="/cases/<%=casee._id%>/show" style="color: black;"
+            ><strong>CNR No - </strong><%=casee.cnrno%></a
+          >
+        </h4>
+        <p><strong>Case Type - </strong><%=casee.casetype%></p>
+      </div>
+      <div class="col-lg-6">
+        <p><strong>Client Name - </strong><%=casee.clientname%></p>
+        <p><strong>Lawyer Name - </strong><%=casee.lawyername%></p>
+      </div>
     </div>
+    <hr />
     <% }) %>
+    <h4 style="text-align: center;">No more entires in database :(</h4>
   </div>
 </div>
 

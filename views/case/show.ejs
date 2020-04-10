@@ -2,7 +2,10 @@
 
 <div class="cent">
   <div class="container bodys">
-    <div class="pt-4" style="text-align: left; font-size: large;">
+    <div
+      class="pl-4 pr-4 pb-0 pt-5"
+      style="text-align: left; font-size: large;"
+    >
       <h3><strong>CNR No - </strong><%=casee.cnrno%></h3>
       <p><strong>Case Type - </strong><%=casee.casetype%></p>
       <p><strong>Registration Number - </strong><%=casee.regno%></p>
@@ -12,12 +15,18 @@
       <p><strong>Current Stage - </strong><%=casee.stage%></p>
       <p><strong>Next Hearing Date - </strong><%=casee.nexthearing%></p>
       <p><strong>Court Name - </strong><%=casee.courtname%></p>
-      <p>
-        <a href="/cases/<%=casee._id%>/edit" class="btn btn-light">Edit Case</a>
-      </p>
-      <form action="/cases/<%=casee._id%>?_method=DELETE" method="POST">
-        <button class="btn btn-light">Delete</button>
-      </form>
+      <div class="mt-4">
+        <a href="/cases/<%=casee._id%>/edit" class="btn btn-outline-dark m-2"
+          >Edit Case</a
+        >
+        <form
+          action="/cases/<%=casee._id%>?_method=DELETE"
+          style="display: inline;"
+          method="POST"
+        >
+          <button class="btn btn-outline-dark m-2">Delete</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

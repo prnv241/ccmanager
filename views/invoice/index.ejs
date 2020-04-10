@@ -1,20 +1,26 @@
 <%- include("../partials/header.ejs") %>
 
 <div class="cent">
-  <div class="container bodys">
-    <% invs.forEach(function(inv) { %>
-    <div class="pt-4">
-      <h3><strong>Lawyer Name - </strong><%=inv.lname%></h3>
-      <p><strong>Client Name - </strong><%=inv.cname%></p>
-      <p><strong>Amount - </strong><%=inv.amount%></p>
-      <p><strong>Duedate - </strong><%=inv.duedate%></p>
-      <p><strong>Status - </strong><%=inv.status%></p>
-      <form action="/invoices/<%=inv._id%>?_method=DELETE" method="POST">
-        <button class="btn btn-outline-dark">Delete</button>
-      </form>
-      <hr />
+  <div class="container bodys" style="text-align: left;">
+    <p class="pagehead">Your Invoices</p>
+    <% invs.invoices.forEach(function(inv) { %>
+    <div class="pl-5 pr-5 pt-4 row">
+      <div class="col-lg-6">
+        <h4><strong>Lawyer Name - </strong><%=inv.lname%></h4>
+        <p><strong>Client Name - </strong><%=inv.cname%></p>
+        <p><strong>Amount - </strong><%=inv.amount%></p>
+      </div>
+      <div class="col-lg-6">
+        <p><strong>Duedate - </strong><%=inv.duedate%></p>
+        <p><strong>Status - </strong><%=inv.status%></p>
+        <form action="/invoices/<%=inv._id%>?_method=DELETE" method="POST">
+          <button class="btn btn-outline-dark">Delete</button>
+        </form>
+      </div>
     </div>
+    <hr />
     <% }) %>
+    <h4 style="text-align: center;">No more entires in database :(</h4>
   </div>
 </div>
 

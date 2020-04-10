@@ -1,0 +1,30 @@
+<%- include("../partials/header.ejs") %>
+
+<div>
+  <div class="container boxes">
+    <h2 class="mt-3" style="text-align: center;">Signup for a new account</h2>
+    <form action="/signup" method="POST" class="mt-5">
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" class="form-control" name="username" required />
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" name="password" required />
+      </div>
+      <div class="form-group">
+        <label>Select Role</label>
+        <select class="form-control" name="role" required>
+          <option selected>Select from below</option>
+          <option>Lawyer</option>
+          <option>Client</option>
+        </select>
+      </div>
+      <div class="form-group mt-5">
+        <button type="submit" class="btn btn-outline-dark">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<% include("../partials/footer.ejs") %>

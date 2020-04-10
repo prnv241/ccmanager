@@ -1,19 +1,28 @@
 <%- include("../partials/header.ejs") %>
 
 <div class="cent">
-  <div class="container bodys">
-    <% apts.forEach(function(apt) { %>
-    <div class="pt-4">
-      <h3><strong>Lawyer Name - </strong><%=apt.lname%></h3>
-      <p><strong>Client Name - </strong><%=apt.cname%></p>
-      <p><strong>Date - </strong><%=apt.date%></p>
-      <p><strong>Time - </strong><%=apt.time%></p>
+  <div class="container bodys" style="text-align: left;">
+    <p class="pagehead">Your Appointments</p>
+    <% apts.appointments.forEach(function(apt) { %>
+    <div class="pl-5 pr-5 pt-4 row">
+      <div class="col-lg-6">
+        <h4><strong>Lawyer Name - </strong><%=apt.lname%></h4>
+        <p><strong>Client Name - </strong><%=apt.cname%></p>
+      </div>
+      <div class="col-lg-6">
+        <p><strong>Date - </strong><%=apt.date%></p>
+        <p><strong>Time - </strong><%=apt.time%></p>
+      </div>
+
       <form action="/appointments/<%=apt._id%>?_method=DELETE" method="POST">
-        <button class="btn btn-outline-dark">Delete</button>
+        <button class="btn btn-outline-dark" style="margin-left: 50%;">
+          Delete
+        </button>
       </form>
-      <hr />
     </div>
+    <hr />
     <% }) %>
+    <h4 style="text-align: center;">No more entires in database :(</h4>
   </div>
 </div>
 

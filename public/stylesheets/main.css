@@ -40,12 +40,12 @@ body .boxes {
   width: 40%;
   margin-top: 5%;
   padding: 60px;
-  background-color: rgba(255,255,255,0.6);
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 2%;
 }
 
 .container.bodys {
-  background-color: rgba(255,255,255,0.6);
+  background-color: rgba(255, 255, 255, 0.6);
   margin-top: 40px;
   padding-bottom: 40px;
   width: 60%;
@@ -58,7 +58,20 @@ body .boxes {
   float: left;
 }
 
-body #ig{
+body #ig {
   height: 300px;
   border-radius: 50%;
+}
+
+.pagehead {
+  text-align: center;
+  font-size: 3rem;
+  padding-top: 15px;
+  margin-bottom: 5px;
+}
+
+.listall {
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
 }
