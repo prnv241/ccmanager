@@ -1,72 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="/stylesheets/main.css" />
-    <title>CC Manager</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <a href="/" class="navbar-brand">CCManager</a>
-      <button
-        class="navbar-toggler"
-        data-toggle="collapse"
-        data-target="#navcol"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-      <div class="collapse navbar-collapse" id="navcol">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a href="/dashboard" class="nav-link">Home</a>
-          </li>
-          <li class="nav-item active">
-            <a href="/getstarted" class="nav-link">Getting Started</a>
-          </li>
-          <li class="nav-item active">
-            <a href="/aboutus" class="nav-link">About Us</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <%if(!currentUser) { %>
-          <li class="nav-item"><a class="nav-link" href="/login">LogIn</a></li>
-          <li class="nav-item">
-            <a class="nav-link" href="/signup">SignUp</a> <% }else { %> <%
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/stylesheets/main.css" />
+  <title>CC Manager</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a href="/" class="navbar-brand">CCManager</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navcol">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a href="/dashboard" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a href="/getstarted" class="nav-link">Getting Started</a>
+        </li>
+        <li class="nav-item active">
+          <a href="/aboutus" class="nav-link">About Us</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <%if(!currentUser) { %>
+        <li class="nav-item"><a class="nav-link" href="/login">LogIn</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="/signup">SignUp</a> <% }else { %> <%
             if(currentUser.role == "Lawyer") { %>
-          </li>
+        </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="/profile/lawyer/<%=currentUser.roleId%>"
-              ><%=currentUser.username%></a
-            >
-          </li>
-          <% } else { %>
-          <li class="nav-item">
-            <a class="nav-link" href="/profile/client/<%=currentUser.roleId%>"
-              ><%=currentUser.username%></a
-            >
-          </li>
-          <% } %>
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">LogOut</a>
-          </li>
-          <% } %>
-        </ul>
-      </div>
-    </nav>
-  </body>
-</html>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile/lawyer/<%=currentUser.roleId%>"><%=currentUser.username%></a>
+        </li>
+        <% } else { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile/client/<%=currentUser.roleId%>"><%=currentUser.username%></a>
+        </li>
+        <% } %>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">LogOut</a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </nav>
+  <% if(error.length > 0) { %>
+  <div class="alert alert-dark container mt-3" role="alert"><%=error%></div>
+  <% } %> <% if(success.length > 0) { %>
+  <div class="alert alert-light container mt-3" role="alert">
+    <%=success%>
+  </div>
+  <% } %>

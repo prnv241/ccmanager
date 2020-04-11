@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var methodOverride = require("method-override");
+var flash = require("connect-flash");
 var User = require("./models/user");
 var passport = require("passport");
 var LocalStrategy = require("passport-local");
@@ -37,6 +38,7 @@ mongoose
     console.log("ERROR:", err.message);
   });
 
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
@@ -44,6 +46,11 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user;
+  next();
+});
+app.use(function (req, res, next) {
+  res.locals.error = req.flash("error");
+  res.locals.success = req.flash("success");
   next();
 });
 
